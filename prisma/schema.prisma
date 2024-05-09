@@ -12,13 +12,25 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-model Guitar{
-  id  Int @id @default(autoincrement())
+
+model Guitar {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  brand       String   @db.VarChar(255)
+  description String   @db.LongText
+  price       Decimal  @default(0.0) @db.Decimal()
+  model       String   @db.VarChar(255)
+  isDeleted   Boolean  @default(false)
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  brand String @db.VarChar(255)
-  description String @db.LongText
-  price Decimal @db.Decimal() @default(0.0)
-  model String @db.VarChar(255)
-  isDeleted Boolean @default(false)
+  name      String   @db.VarChar(255)
+  email     String   @db.VarChar(255)
+  password  String   @db.LongText
+  isDeleted Boolean  @default(false)
+  lastName  String   @db.VarChar(255)
 }
