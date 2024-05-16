@@ -9,7 +9,7 @@ const server = express()
 const PORT = process.env.PORT
 server
   .use(express.json())
-  .use('/', (req, res) => res.send("Hello world"))
+  .get('/', (req, res) => res.send("Hello world"))
   .use(authRouter)
   .get('/ping', (_, res) => {
     res.status(200).json({ message: 'pong' })

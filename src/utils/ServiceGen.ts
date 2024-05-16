@@ -13,6 +13,7 @@ export class ServiceGen {
     try {
       return await (this.client as any)[this.model].findMany()
     } catch (err) {
+      console.log(err)
       throw new AppError(400, "Error al obtener los registros")
     }
   }
