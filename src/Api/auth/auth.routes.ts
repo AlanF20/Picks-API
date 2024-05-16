@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { RegisterUser } from "./auth.services";
-import { SuccessResponse } from "../utils/SuccessResponse";
+import { SuccessResponse } from "../../utils/SuccessResponse";
 
 const authRouter = Router()
 
