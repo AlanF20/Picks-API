@@ -19,7 +19,7 @@ export function ErrorHandler(err: AppError, req: Request, res: Response, next: N
   console.log("Middleware Error Handling")
   console.log(err.stack)
   res.status(err.statusCode).json({
-    success: false,
+    success: "false",
     message: err.message
   })
 }

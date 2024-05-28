@@ -5,7 +5,7 @@ import { SuccessResponse } from "../../utils/SuccessResponse";
 const authRouter = Router()
 
 authRouter
-  .get('/login', async (req, res, next) => {
+  .post('/login', async (req, res, next) => {
     try{
       const user = req.body
       const token = await AuthenticateUser(user)
