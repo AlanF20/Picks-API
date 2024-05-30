@@ -22,6 +22,7 @@ model Guitar {
   price       Decimal  @default(0.0) @db.Decimal()
   model       String   @db.VarChar(255)
   isDeleted   Boolean  @default(false)
+  imgUrl      String   @db.LongText
 }
 
 model User {

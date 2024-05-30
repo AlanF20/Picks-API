@@ -14,6 +14,7 @@ export class ApiGen {
     this.router = router
       .get(this.endpoint, async (req, res, next) => {
         try {
+          console.log('obtener')
           res.json(await this.service.getItems())
         } catch (err) {
           next(err)
@@ -22,6 +23,7 @@ export class ApiGen {
       .get(`${this.endpoint}/:id`, async (req, res, next) => {
         try {
           const { id } = req.params
+          console.log(id)
           res.json(await this.service.getItemById(Number(id)))
         } catch (err) {
           next(err)
@@ -31,7 +33,7 @@ export class ApiGen {
         try {
           const item = req.body
           await this.service.postItem(item)
-          res.json(JSON.stringify(new SuccessResponse(201, 'Añadido correctamente')))
+          res.json(new SuccessResponse(201, 'Añadido correctamente').response)
         } catch (err) {
           next(err)
         }
@@ -41,7 +43,7 @@ export class ApiGen {
           const { id } = req.params
           const itemNewData = req.body
           await this.service.editItem(Number(id), itemNewData)
-          res.json(JSON.stringify(new SuccessResponse(201, 'Edicion correcta')))
+          res.json((new SuccessResponse(201, 'Edicion correcta').response))
         } catch (err) {
           next(err)
         }
@@ -50,7 +52,7 @@ export class ApiGen {
         try{
          const {id} = req.params
           await this.service.deleteItem(Number(id))
-          res.json(JSON.stringify(new SuccessResponse(201, 'Eliminacion correcta.')))
+          res.json(new SuccessResponse(201, 'Eliminacion correcta.').response)
         }catch(err){
           next(err)
         }
